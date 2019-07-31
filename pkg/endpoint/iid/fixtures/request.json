@@ -1,0 +1,10 @@
+{
+  "project-id": "project-123",
+  "instance-id": "instance-abc",
+  "image-id": "image-123",
+  "user-data": "",
+  "hostname": "test.example.org",
+  "metadata": {
+    "foo": "bar"
+  }
+}
