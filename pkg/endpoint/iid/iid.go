@@ -13,6 +13,7 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/lestrrat-go/jwx/jwa"
 	"github.com/lestrrat-go/jwx/jws"
 
@@ -30,6 +31,7 @@ type Response struct {
 }
 
 type Payload struct {
+	ID         string            `json:"jti"`
 	ProjectID  string            `json:"projectID"`
 	InstanceID string            `json:"instanceID"`
 	ImageID    string            `json:"imageID"`
@@ -66,8 +68,10 @@ func (c *HandlerConfig) IIDHandler() func(http.ResponseWriter, *http.Request) {
 		}
 
 		now := time.Now()
+		uuid := uuid.New().String()
 
 		payload := &Payload{
+			ID:         uuid,
 			ProjectID:  data.ProjectID,
 			InstanceID: data.InstanceID,
 			ImageID:    data.ImageID,
