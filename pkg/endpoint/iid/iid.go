@@ -87,7 +87,7 @@ func (c *HandlerConfig) IIDHandler() func(http.ResponseWriter, *http.Request) {
 		}
 
 		h := &jws.StandardHeaders{
-			JWStyp:   "JOSE+JSON",
+			JWStyp:   "JWT",
 			JWSkeyID: id,
 		}
 		jwsBuf, err := jws.Sign(buf, c.SignAlg, privKey, jws.WithHeaders(h))
